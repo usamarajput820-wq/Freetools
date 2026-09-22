@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Free online tools for PDF, images, text and calculators. Fast, simple and mobile friendly.">
+<title>FreeTools — Free Online Tools</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:#f6f8fc;color:#172033}
+header{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:white;padding:42px 18px 58px;text-align:center}
+h1{font-size:38px;margin:0 0 10px}.hero{max-width:720px;margin:auto}.hero p{opacity:.92;font-size:17px}
+.search{max-width:650px;margin:22px auto 0;display:flex;background:white;border-radius:14px;padding:6px}.search input{border:0;outline:0;flex:1;padding:13px;font-size:16px}.search button{border:0;border-radius:10px;background:#111827;color:white;padding:0 18px}
+main{max-width:1050px;margin:-28px auto 50px;padding:0 15px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:white;border-radius:18px;padding:22px;box-shadow:0 6px 22px #18204b12;border:1px solid #e8eaf2}.icon{font-size:30px}.card h2{font-size:19px;margin:10px 0 7px}.card p{color:#667085;min-height:44px}.btn{display:inline-block;background:#4f46e5;color:#fff;text-decoration:none;border-radius:10px;padding:10px 15px;font-weight:600}
+.section{margin:35px 0 15px}.section h2{font-size:24px}.ad{margin:22px 0;padding:24px;text-align:center;border:1px dashed #b7bdcc;border-radius:14px;color:#7b8496;background:#fff}
+footer{text-align:center;padding:30px;color:#667085}
+@media(max-width:760px){h1{font-size:31px}.grid{grid-template-columns:1fr 1fr}}@media(max-width:480px){.grid{grid-template-columns:1fr}.search button{padding:0 12px}}
+</style></head>
+<body>
+<header><div class="hero"><h1>FreeTools</h1><p>Fast, simple and free online tools — made for mobile.</p>
+<div class="search"><input id="q" placeholder="Search a tool..." oninput="filter()"><button onclick="filter()">Search</button></div></div></header>
+<main>
+<div class="ad">Advertisement space — connect AdSense after your site has real traffic.</div>
+<div class="section"><h2>Popular Tools</h2></div>
+<div class="grid" id="tools">
+<div class="card" data-name="percentage calculator"><div class="icon">🔢</div><h2>Percentage Calculator</h2><p>Calculate percentages quickly.</p><a class="btn" href="#percentage">Open</a></div>
+<div class="card" data-name="age calculator"><div class="icon">🎂</div><h2>Age Calculator</h2><p>Find your exact age from your date of birth.</p><a class="btn" href="#age">Open</a></div>
+<div class="card" data-name="word counter"><div class="icon">📝</div><h2>Word Counter</h2><p>Count words, characters and lines.</p><a class="btn" href="#words">Open</a></div>
+<div class="card" data-name="image compressor"><div class="icon">🖼️</div><h2>Image Compressor</h2><p>Compress images in your browser.</p><a class="btn" href="#image">Open</a></div>
+<div class="card" data-name="loan calculator"><div class="icon">💰</div><h2>Loan Calculator</h2><p>Estimate monthly payments and total interest.</p><a class="btn" href="#loan">Open</a></div>
+<div class="card" data-name="pdf tools"><div class="icon">📄</div><h2>PDF Tools</h2><p>PDF tools can be added in the next version.</p><a class="btn" href="#pdf">Open</a></div>
+</div>
+<div class="section"><h2>Tools</h2></div>
+<div class="card" id="percentage"><h2>Percentage Calculator</h2><input id="p1" type="number" placeholder="What is %" style="padding:12px;width:45%"><input id="p2" type="number" placeholder="of" style="padding:12px;width:45%"><button class="btn" onclick="pct()">Calculate</button><p id="pr"></p></div>
+<br>
+<div class="card" id="words"><h2>Word Counter</h2><textarea id="txt" oninput="wc()" placeholder="Type or paste text..." style="width:100%;min-height:130px;padding:12px"></textarea><p id="wr">0 words · 0 characters</p></div>
+<br>
+<div class="card" id="age"><h2>Age Calculator</h2><input id="dob" type="date" style="padding:12px"><button class="btn" onclick="age()">Calculate</button><p id="ar"></p></div>
+<div class="ad">Advertisement space</div>
+</main><footer>© 2026 FreeTools · Free to use</footer>
+<script>
+function pct(){let a=+p1.value,b=+p2.value;pr.textContent=a&&b?(a/100*b).toFixed(2):'Enter both numbers.'}
+function wc(){let t=txt.value;wr.textContent=(t.trim()?t.trim().split(/\s+/).length:0)+' words · '+t.length+' characters'}
+function age(){let d=new Date(dob.value),n=new Date();if(isNaN(d))return ar.textContent='Select your date of birth.';let y=n.getFullYear()-d.getFullYear();if(new Date(n.getFullYear(),d.getMonth(),d.getDate())>n)y--;ar.textContent='Your age is '+y+' years.'}
+function filter(){let q=document.getElementById('q').value.toLowerCase();document.querySelectorAll('.card[data-name]').forEach(x=>x.style.display=x.dataset.name.includes(q)?'block':'none')}
+</script></body></html>
